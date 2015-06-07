@@ -17,7 +17,8 @@ namespace FPMakesAWebsite
 
         public static void StartUpdater()
         {
-            timer = new Timer(30000);
+            PullNewCode(null, null);
+            timer = new Timer(600000);
 
             timer.Enabled = true;
             timer.Elapsed += PullNewCode;
