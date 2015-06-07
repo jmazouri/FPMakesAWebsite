@@ -17,14 +17,14 @@ namespace FPMakesAWebsite
 
         public static void StartUpdater()
         {
-            PullNewCode();
-
             timer = new Timer(30000);
-            timer.Elapsed += PullNewCode();
+
+            timer.Enabled = true;
+            timer.Elapsed += PullNewCode;
             timer.Start();
         }
 
-        private static ElapsedEventHandler PullNewCode()
+        private static void PullNewCode(object sender, ElapsedEventArgs e)
         {
             Console.WriteLine("[{0}] Pulling newest code...", DateTime.Now);
             CQ doc = CQ.CreateFromUrl("http://facepunch.com/showthread.php?t=1469381", new ServerConfig
@@ -35,8 +35,6 @@ namespace FPMakesAWebsite
             });
 
             CurrentHtml = doc[".bbcode_code"].Last().Text();
-
-            return null;
         }
     }
 }
