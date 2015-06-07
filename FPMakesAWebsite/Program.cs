@@ -14,7 +14,7 @@ namespace FPMakesAWebsite
             #if DEBUG
                 string hostname = "http://localhost:8080/";
             #else
-                string hostname = "http://fp.jmazouri.com/";
+                string hostname = "http://fp.jmazouri.com:81/";
             #endif
 
             using (NancyHost host = new NancyHost(new Uri(hostname)))
